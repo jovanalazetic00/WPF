@@ -1,0 +1,65 @@
+﻿<Window x:Class="Projekat.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" Background="Transparent" AllowsTransparency="True">
+
+    <Canvas Width="595" Height="408">
+        <Path Stroke="Blue" StrokeThickness="5" Name="UIPath" Height="379.268" Stretch="Fill" Canvas.Top="22.966" Width="482.984" Canvas.Left="9.708" >
+            <Path.Fill>
+                <ImageBrush ImageSource="OIRIO.jpeg"/>
+            </Path.Fill>
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure StartPoint="0,100">
+                        <LineSegment Point="0,275"/>
+                        <LineSegment Point="100,350"/>
+                        <LineSegment Point="275,350"/>
+                        <LineSegment Point="375,275"/>
+                        <LineSegment Point="375,100"/>
+                        <LineSegment Point="275,0"/>
+                        <LineSegment Point="100,0"/>
+                        <LineSegment Point="0,100"/>
+
+
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <DataGrid Name="DataGrid" Height="208" Width="350" Canvas.Left="76" Canvas.Top="81" ItemsSource="{Binding utakmicas}" AutoGenerateColumns="False" CanUserResizeColumns="False"  CanUserAddRows="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="slika" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Name="image" Height="80" Width="80" Source="{Binding PathSlika}"/>
+                        </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Width="*" Header="Utakmica" Binding="{Binding Protivnik}"/>
+                <DataGridTextColumn Width="*" Header="Datum utakmice" Binding="{Binding Datum}" />
+                <DataGridTextColumn Width="*" Header="BrPoena" Binding="{Binding BrPoena}"  />
+                <DataGridTemplateColumn Width="*" Header="Opcije">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                                <Button Name="Procitaj" Content="Procitaj" Click="Procitaj_Click"/>
+                                <Button Name="Izmijeni" Content="Izmijeni" Click="Izmjeni_Click"/>
+                                <Button Name="Obrisi" Content="Obrisi" Click="Obrisi_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="X" Canvas.Left="323" Canvas.Top="41" Width="31" Height="35" BorderBrush="#FFF71818" Foreground="#FFEB0A0A" FontSize="18" FontWeight="Bold" FontStyle="Italic" Click="Izadji_Click"/>
+        <Button Content="Dodaj utakmicu" Canvas.Left="160" Canvas.Top="362" Width="178" Height="36" Background="#FFBDF0EB" BorderBrush="#FF181717" Foreground="#FF03115A" FontSize="18" FontWeight="Bold" FontStyle="Italic" Click="Dodaj_Click"/>
+
+    </Canvas>
+</Window>
